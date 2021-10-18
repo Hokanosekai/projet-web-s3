@@ -12,18 +12,18 @@
 
 a {
     text-decoration: none;
-    color: var(--white-1);
+    color: var(--white);
 }
 
 a:visited {
-    color: var(--white-1);
+    color: var(--white);
 }
 
 body {
     display: flex;
     height: 100vh;
-    color: var(--white-1);
-    background-color: var(--black-2);
+    color: var(--white);
+    background-color: var(--grey-1);
 }
 
 .container {

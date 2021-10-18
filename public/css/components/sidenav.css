@@ -3,19 +3,13 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: var(--black-3);
+    background-color: var(--grey-2);
     transition: width 0.3s;
 }
 
 .sidenav.active {
     width: 16rem;
 }
-
-/*
-.sidenav:hover {
-    width: 16rem;
-    cursor: pointer;
-}*/
 
 .sidenav i {
     height: 50px;
@@ -32,6 +26,26 @@
     position: relative;
     margin: 1rem 0;
     padding: 0 0.8rem;
+}
+
+.sidenav .logo .details {
+    display: none;
+}
+
+.sidenav .logo .details svg {
+    height: 25px;
+    user-select: none;
+}
+
+.sidenav .logo .details .logo_name {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--white);
+    letter-spacing: 1px;
+}
+
+.sidenav .logo .details .logo_name .blue {
+    color: var(--blue-4);
 }
 
 .sidenav .logo i:hover {
@@ -61,18 +75,14 @@
     padding: 0 0.5rem;
 }
 
-
+.sidenav .nav_list li a:hover,
 .sidenav .nav_list li a.active {
-    background-color: var(--white-1);
-    color: var(--black-2);
+    background-color: var(--white);
+    color: var(--blue-4);
 }
 
-.sidenav .nav_list li a:hover {
-    background-color: var(--white-1);
-    color: var(--black-2);
-}
-
-.sidenav li i{
+.sidenav li i,
+.sidenav .profile i {
     height: 50px;
     line-height: 50px;
     font-size: 1.3rem;
@@ -81,66 +91,56 @@
 
 .sidenav .profile {
     position: relative;
-    margin: 1rem 0.8rem;
     padding: 0 0.8rem;
+}
+
+.sidenav .profile a,
+.sidenav .profile .logged{
+    width: 100%;
     display: flex;
-    justify-content: center;
     border-radius: 12px;
     align-items: center;
+    margin: 1rem 0;
     transition: all 0.3s ease;
+    padding: 0 0.5rem;
+}
+
+.sidenav .profile .logged {
+    background-color: var(--grey-3);
+}
+
+.sidenav .profile .logged i {
     cursor: pointer;
-    background-color: var(--grey-1);
 }
 
-.sidenav .profile i {
-    height: 50px;
-    line-height: 50px;
-    font-size: 1.3rem;
-    border-radius: 12px;
+.sidenav .profile a {
+    background-color: var(--blue-4);
 }
 
-.sidenav .profile .details {
-    opacity: 0;
-    display: none;
-    visibility: hidden;
-}
-
-.sidenav .logo .details {
-    display: none;
-    opacity: 0;
-    transition: all 0.4s;
-}
-
+.sidenav .profile a .link,
+.sidenav .profile .details,
 .sidenav .nav_list .link {
     display: none;
-    opacity: 0;
-    transition: all 0.4s;
 }
 
 .sidenav.open {
-    width: 14rem;
+    width: 15rem;
 }
 
 .sidenav.open .profile .details {
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
-    opacity: 1;
-    visibility: visible;
-    transition: visibility 10s linear;
 }
 
 .sidenav.open .logo .details {
     display: flex;
-    opacity: 1;
-    transition: all 0.4s;
+    align-items: center;
 }
 
 .sidenav.open .nav_list .link {
     display: inline-block;
-    opacity: 1;
     white-space: nowrap;
-    transition: opacity 1s;
 }
 
 .sidenav.open .logo {
@@ -154,16 +154,19 @@
 .sidenav.open .profile {
     display: flex;
     margin: 0;
-    padding: 0.8rem 0.8rem;
-    border-radius: 0;
-    justify-content: space-between;
-    background-color: var(--grey-1);
-    cursor: default;
+    padding: 0;
 }
 
-.sidenav.open .profile:hover {
-    background-color: var(--grey-1);
-    color: var(--white-1);
+.sidenav.open .profile .logged {
+    border-radius: 0;
+    padding: 0.8rem 0.8rem;
+    margin: 0;
+    justify-content: space-between;
+    background-color: var(--grey-3);
+}
+
+.sidenav.open .profile a {
+    margin: 1rem 0.8rem;
 }
 
 .sidenav.open .profile i {
@@ -183,4 +186,20 @@
     font-weight: 400;
     color: #fff;
     white-space: nowrap;
+}
+
+.sidenav.open .profile a {
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    background-color: var(--blue-4);
+    border-radius: 12px;
+}
+
+.sidenav.open .profile a i {
+    margin: 0 0.8rem 0 0;
+}
+
+.sidenav.open .profile a .link {
+    display: inline-block;
 }
