@@ -1,0 +1,26 @@
+div.slider {
+    display: flex;
+    overflow-x: scroll;
+    height: 40%;
+}
+
+.slider::after {
+    content: ' ';
+    width: 80px;
+    height: 40%;
+    margin-bottom: 1rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-image: linear-gradient(to right, rgba(113, 119, 74, 0) 0%, var(--grey-1) 80%, var(--grey-1) 100%);
+}
+
+.slider::before {
+    content: ' ';
+    width: 80px;
+    height: 40%;
+    margin-bottom: 1rem;
+    position: absolute;
+    top: 0;
+    background-image: linear-gradient(to left, rgba(113, 119, 74, 0) 0%, var(--grey-1) 80%, var(--grey-1) 100%);
+}

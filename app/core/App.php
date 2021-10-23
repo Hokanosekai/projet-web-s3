@@ -1,44 +1,75 @@
 <?php
 
-
+/**
+ * Class App
+ */
 class App {
 
-    protected $controller = 'home';
+    private $routes = [
+        "home" => ["controller" => "Home", "method" => "index"],
+        "error" => ["controller" => "Home", "method" => "error"],
 
-    protected $method = 'index';
+        "login" => ["controller" => "Home", "method" => "login"],
+        "logout" => ["controller" => "Home", "method" => "logout"],
+        "register" => ["controller" => "Home", "method" => "register"],
 
-    protected $params = [];
+        "humours" => ["controller" => "Evenement", "method" => "humour"],
+        "theatres" => ["controller" => "Evenement", "method" => "theatre"],
+        "concerts" => ["controller" => "Evenement", "method" => "concert"],
+        "expositions" => ["controller" => "Evenement", "method" => "exposition"],
+
+        "dashboard" => ["controller" => "Dashboard", "method" => "index"],
+        "list-users" => ["controller" => "Dashboard", "method" => "listUser"],
+        "list-evenements" => ["controller" => "Dashboard", "method" => "listEvt"],
+        "edit-evenement" => ["controller" => "Dashboard", "method" => "editEvt"],
+
+        "api-count" => ["controller" => "Api", "method" => "count"],
+        "api-reservations" => ["controller" => "Api", "method" => "reservations"],
+    ];
 
     /**
      * App constructor.
      */
     public function __construct() {
-        $url = $this->parseUrl();
+        $route = $this->getRoute();
+        $params = $this->getParams();
 
-        if (file_exists('../app/controllers/'.$url[0].'.php')) {
-            $this->controller = $url[0];
-            unset($url[0]);
+        if (key_exists($route, $this->routes)) {
+            $controller = $this->routes[$route]['controller'];
+            $method = $this->routes[$route]['method'];
+
+            $controller = new $controller();
+            $controller->$method($params);
+        } else {
+            $controller = $this->routes['error']['controller'];
+            $method = $this->routes['error']['method'];
+
+            $controller = new $controller();
+            $controller->$method($params);
         }
-
-        require_once '../app/controllers/'.$this->controller.'.php';
-
-        $this->controller = new $this->controller;
-
-        if (isset($url[1])) {
-            if (method_exists($this->controller, $url[1])) {
-                $this->method = $url[1];
-                unset($url[1]);
-            }
-        }
-
-        $this->params = $url? array_values($url) : [];
-
-        call_user_func_array([$this->controller, $this->method], $this->params);
     }
 
-    public function parseUrl() {
-        if (isset($_GET['url'])) {
-            return $url = explode('/', filter_var(rtrim($_GET['url'], '/'), FILTER_SANITIZE_URL));
+    /**
+     * @return mixed|string
+     */
+    public function getRoute() {
+        return !empty($_GET)?
+            explode('/', $_GET['url'])[0] :
+            'home';
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getParams() {
+        $url = !empty($_GET)? explode('/', $_GET['url']) : [];
+        unset($url[0]);
+
+        for ($i = 1; $i < count($url); $i++) {
+            $params[$url[$i]] = $url[$i+1];
+            $i++;
         }
+
+        return isset($params)? $params : null;
     }
 }

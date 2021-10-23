@@ -1,0 +1,57 @@
+div.card-container {
+    display: flex;
+    overflow-x: scroll;
+    padding: 0 0 1rem 0;
+    margin: 1rem 0 0 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--grey-1) var(--grey-1);
+}
+div.card {
+    display: flex;
+    flex-direction: column;
+    min-width: 90%;
+    background-color: var(--grey-3);
+    border-radius: 12px;
+}
+
+.card:not(:last-child) {
+    margin: 0 1rem 0 0;
+}
+
+@media screen and (min-width: 780px) {
+    div.card {
+        min-width: 50%;
+    }
+}
+@media screen and (min-width: 1150px) {
+    div.card {
+        min-width: 35%;
+    }
+}
+
+.card img {
+    height: 80%;
+    width: 100%;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    object-fit: cover;
+}
+
+.card .details {
+    height: 30%;
+    width: 100%;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.details .info {
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+}
+.details .title {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+

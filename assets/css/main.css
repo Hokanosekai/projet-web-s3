@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+@import "colors.css";
+
+@import "layouts/container.css";
+
+@import "components/button.css";
+@import "components/sidenav.css";
+@import "components/card.css";
+@import "components/slider.css";
+@import "components/login.css";
+
+* {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: var(--white);
+}
+
+a:visited {
+    color: var(--white);
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    color: var(--white);
+    background-color: var(--grey-1);
+    scrollbar-width: thin;
+    scrollbar-color: var(--grey-2) var(--grey-1);
+}
+
+@media screen and (max-width: 780px) {
+    body {
+        flex-direction: column;
+    }
+}
