@@ -11,6 +11,9 @@ sidenavOpenBtn.addEventListener('click', () => {
 /**
  * Easter Egg
  */
-document.querySelector('.svg-container .fa-laugh-beam').addEventListener('click', () => {
-    window.location.replace('https://wordus.xyz');
-})
+const t = document.querySelector('.svg-container .fa-laugh-beam')?
+    document.querySelector('.svg-container .fa-laugh-beam')
+        .addEventListener('click', () => {
+        window.location.replace('https://wordus.xyz');
+    }) :
+    null;

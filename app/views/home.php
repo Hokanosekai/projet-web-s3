@@ -32,9 +32,9 @@
                     <div class="details">
                         <div class="info">
                             <span class="title"><?= $piece->getTitre() ?></span>
-                            <span class="date">du 12 au 15 janvier</span>
+                            <span class="date">Du <?= $piece->getDateStart() ?> au <?= $piece->getDateEnd()?></span>
                         </div>
-                        <a class="btn link" href="<?= HOST ?>theatres/id/<?= $piece->getId() ?>">Voir plus <i class="fas fa-arrow-right"></i></a>
+                        <a class="btn link" href="<?= HOST ?>evenement/id/<?= $piece->getId() ?>">Voir plus <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             <?php } ?>
@@ -51,9 +51,9 @@
                     <div class="details">
                         <div class="info">
                             <span class="title"><?= $concert->getTitre() ?></span>
-                            <span class="date">du 12 au 15 janvier</span>
+                            <span class="date">Du <?= $concert->getDateStart() ?> au <?= $concert->getDateEnd()?></span>
                         </div>
-                        <a class="btn link" href="<?= HOST ?>concerts/id/<?= $concert->getId() ?>">Voir plus <i class="fas fa-arrow-right"></i></a>
+                        <a class="btn link" href="<?= HOST ?>evenement/id/<?= $concert->getId() ?>">Voir plus <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             <?php } ?>
@@ -70,9 +70,9 @@
                     <div class="details">
                         <div class="info">
                             <span class="title"><?= $humour->getTitre() ?></span>
-                            <span class="date">du 12 au 15 janvier</span>
+                            <span class="date">Du <?= $humour->getDateStart() ?> au <?= $humour->getDateEnd()?></span>
                         </div>
-                        <a class="btn link" href="<?= HOST ?>humours/id/<?= $humour->getId() ?>">Voir plus <i class="fas fa-arrow-right"></i></a>
+                        <a class="btn link" href="<?= HOST ?>evenement/id/<?= $humour->getId() ?>">Voir plus <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             <?php } ?>
@@ -89,9 +89,9 @@
                     <div class="details">
                         <div class="info">
                             <span class="title"><?= $expo->getTitre() ?></span>
-                            <span class="date">du 12 au 15 janvier</span>
+                            <span class="date">Du <?= $expo->getDateStart() ?> au <?= $expo->getDateEnd()?></span>
                         </div>
-                        <a class="btn link" href="<?= HOST ?>expositions/id/<?= $expo->getId() ?>">Voir plus <i class="fas fa-arrow-right"></i></a>
+                        <a class="btn link" href="<?= HOST ?>evenement/id/<?= $expo->getId() ?>">Voir plus <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             <?php } ?>

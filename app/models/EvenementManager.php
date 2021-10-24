@@ -57,8 +57,8 @@ class EvenementManager extends BDD {
             $evt->setTitre($row['titre']);
             $evt->setDescription($row['description']);
             $evt->setImgPath(ASSETS.$row['img_path']);
-            $evt->setDateStart($row['date_start']);
-            $evt->setDateEnd($row['date_end']);
+            $evt->setDateStart(Utils::parseDate($row['date_start']));
+            $evt->setDateEnd(Utils::parseDate($row['date_end']));
             $evt->setTypeID($row['id_type']);
             $evt->setTypeName($row['name']);
             $evt->setPlaces($row['places']);
@@ -92,8 +92,8 @@ class EvenementManager extends BDD {
         $evt->setTitre($row['titre']);
         $evt->setDescription($row['description']);
         $evt->setImgPath(ASSETS.$row['img_path']);
-        $evt->setDateStart($row['date_start']);
-        $evt->setDateEnd($row['date_end']);
+        $evt->setDateStart(Utils::parseDate($row['date_start']));
+        $evt->setDateEnd(Utils::parseDate($row['date_end']));
         $evt->setTypeID($row['id_type']);
         $evt->setTypeName($row['name']);
         $evt->setPlaces($row['places']);

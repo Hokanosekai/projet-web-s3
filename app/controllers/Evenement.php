@@ -5,25 +5,24 @@
  */
 class Evenement {
 
+    public function evt($params) {
+        $theaterManager = new EvenementManager(EvtTypes::THEATRE);
+        $concert = $theaterManager->findOne($params['id']);
+
+        $view = new View('evenements/evenement');
+        $view->render(['evenement' => $concert]);
+    }
+
     /**
      * @param $params
      */
     public function theatre($params) {
         $theaterManager = new EvenementManager(EvtTypes::THEATRE);
 
-        if (!empty($params)) {
-            $piece = $theaterManager->findOne($params['id']);
+        $theatres = $theaterManager->findAll();
 
-            $view = new View('evenements/evenement');
-            $view->render(['evenement' => $piece]);
-        } else {
-
-            $theatres = $theaterManager->findAll();
-
-            $view = new View('evenements/theatres');
-            $view->render(['evenements' => $theatres]);
-
-        }
+        $view = new View('evenements/theatres');
+        $view->render(['evenements' => $theatres]);
     }
 
     /**
@@ -32,19 +31,10 @@ class Evenement {
     public function concert($params) {
         $concertManager = new EvenementManager(EvtTypes::CONCERT);
 
-        if (!empty($params)) {
-            $concert = $concertManager->findOne($params['id']);
+        $concerts = $concertManager->findAll();
 
-            $view = new View('evenements/evenement');
-            $view->render(['evenement' => $concert]);
-        } else {
-
-            $concerts = $concertManager->findAll();
-
-            $view = new View('evenements/concerts');
-            $view->render(['evenements' => $concerts]);
-
-        }
+        $view = new View('evenements/concerts');
+        $view->render(['evenements' => $concerts]);
     }
 
     /**
@@ -53,19 +43,10 @@ class Evenement {
     public function humour($params) {
         $humourManager = new EvenementManager(EvtTypes::HUMOUR);
 
-        if (!empty($params)) {
-            $humour = $humourManager->findOne($params['id']);
+        $humours = $humourManager->findAll();
 
-            $view = new View('evenements/evenement');
-            $view->render(['evenement' => $humour]);
-        } else {
-
-            $humours = $humourManager->findAll();
-
-            $view = new View('evenements/humours');
-            $view->render(['evenements' => $humours]);
-
-        }
+        $view = new View('evenements/humours');
+        $view->render(['evenements' => $humours]);
     }
 
     /**
@@ -74,18 +55,9 @@ class Evenement {
     public function exposition($params) {
         $expositionManager = new EvenementManager(EvtTypes::EXPOSITION);
 
-        if (!empty($params)) {
-            $exposition = $expositionManager->findOne($params['id']);
+        $expositions = $expositionManager->findAll();
 
-            $view = new View('evenements/evenement');
-            $view->render(['evenement' => $exposition]);
-        } else {
-
-            $expositions = $expositionManager->findAll();
-
-            $view = new View('evenements/expositions');
-            $view->render(['evenements' => $expositions]);
-
-        }
+        $view = new View('evenements/expositions');
+        $view->render(['evenements' => $expositions]);
     }
 }

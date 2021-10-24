@@ -17,6 +17,7 @@ class App {
         "theatres" => ["controller" => "Evenement", "method" => "theatre"],
         "concerts" => ["controller" => "Evenement", "method" => "concert"],
         "expositions" => ["controller" => "Evenement", "method" => "exposition"],
+        "evenement" => ["controller" => "Evenement", "method" => "evt"],
 
         "dashboard" => ["controller" => "Dashboard", "method" => "index"],
         "list-users" => ["controller" => "Dashboard", "method" => "listUser"],
