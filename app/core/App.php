@@ -22,7 +22,10 @@ class App {
         "dashboard" => ["controller" => "Dashboard", "method" => "index"],
         "list-users" => ["controller" => "Dashboard", "method" => "listUser"],
         "list-evenements" => ["controller" => "Dashboard", "method" => "listEvt"],
-        "edit-evenement" => ["controller" => "Dashboard", "method" => "editEvt"],
+
+        "edit" => ["controller" => "Dashboard", "method" => "editEvt"],
+        "create" => ["controller" => "Dashboard", "method" => "editEvt"],
+        "delete" => ["controller" => "Dashboard", "method" => "deleteEvt"],
 
         "api-count" => ["controller" => "Api", "method" => "count"],
         "api-reservations" => ["controller" => "Api", "method" => "reservations"],

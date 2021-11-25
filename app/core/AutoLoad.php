@@ -16,6 +16,7 @@ class AutoLoad {
         define('MODELS', ROOT.'app/models/');
         define('VIEWS', ROOT.'app/views/');
         define('CLASSES', ROOT.'app/classes/');
+        define('IMAGES', ROOT.'assets/');
 
         define('ASSETS', HOST.'assets/');
     }

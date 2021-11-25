@@ -12,7 +12,7 @@ if (!empty($_GET['url'])) {
 <div class="sidenav">
     <div class="logo">
         <div class="details">
-            <svg width="100%" height="100%" viewBox="0 0 482 91" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+            <svg width="100%" height="100%" viewBox="0 0 482 91"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
                 <g transform="matrix(1,0,0,1,-120.251,-543.885)">
                     <g transform="matrix(0.950434,0,0,0.514116,-10.3494,161.777)">
                         <g id="logo-text-blanc" serif:id="logo text blanc" transform="matrix(1.41721,0,0,1.94509,-30.7275,-1.44818)">

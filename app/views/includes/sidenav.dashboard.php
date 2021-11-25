@@ -47,6 +47,34 @@ if (!empty($_GET['url'])) {
                     <span class="link">Dashboard</span>
                 </a>
             </li>
+
+            <li>
+                <a class="<?= $active == 'list-users'? 'active' : '' ?>" href="<?= HOST ?>list-users">
+                    <i class="fas fa-users-cog"></i>
+                    <span class="link">Users</span>
+                </a>
+            </li>
+
+            <li>
+                <a class="<?= $active == 'list-evenements'? 'active' : '' ?>" href="<?= HOST ?>list-evenements">
+                    <i class="far fa-list-alt"></i>
+                    <span class="link">Evenements</span>
+                </a>
+            </li>
+
+            <li>
+                <a class="<?= $active == 'create'? 'active' : '' ?>" href="<?= HOST ?>create">
+                    <i class="fas fa-plus"></i>
+                    <span class="link">Add</span>
+                </a>
+            </li>
+
+            <li>
+                <a class="<?= $active == 'stats'? 'active' : '' ?>" href="<?= HOST ?>dashboard">
+                    <i class="fas fa-chart-pie"></i>
+                    <span class="link">Statistique</span>
+                </a>
+            </li>
         <?php } ?>
     </ul>
 

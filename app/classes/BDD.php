@@ -13,7 +13,7 @@ class BDD {
      * @return PDO
      */
     protected function connect() {
-        $dsn = 'mysql:host='.$this->hostname.';port=3308;dbname='.$this->database;
+        $dsn = 'mysql:host='.$this->hostname.';port=3306;dbname='.$this->database;
         $pdo = new PDO(
             $dsn,
             $this->username,

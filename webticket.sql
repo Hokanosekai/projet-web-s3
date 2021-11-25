@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.9.5deb2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3308
--- Généré le :  Dim 24 oct. 2021 à 21:01
--- Version du serveur :  8.0.18
--- Version de PHP :  7.3.12
+-- Hôte : localhost:3306
+-- Généré le : jeu. 11 nov. 2021 à 12:59
+-- Version du serveur :  8.0.27-0ubuntu0.20.04.1
+-- Version de PHP : 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `webticket`
+-- Base de données : `webticket`
 --
 
 -- --------------------------------------------------------
@@ -28,20 +28,17 @@ SET time_zone = "+00:00";
 -- Structure de la table `evenements`
 --
 
-DROP TABLE IF EXISTS `evenements`;
-CREATE TABLE IF NOT EXISTS `evenements` (
-  `id_evt` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `evenements` (
+  `id_evt` int NOT NULL,
   `titre` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `lieu` varchar(255) NOT NULL,
   `img_path` text NOT NULL,
   `date_start` date NOT NULL,
   `date_end` date NOT NULL,
-  `places` int(11) DEFAULT NULL,
-  `type` int(11) NOT NULL,
-  PRIMARY KEY (`id_evt`),
-  KEY `type` (`type`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+  `places` int DEFAULT NULL,
+  `type` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `evenements`
@@ -68,12 +65,10 @@ INSERT INTO `evenements` (`id_evt`, `titre`, `description`, `lieu`, `img_path`, 
 -- Structure de la table `evt_types`
 --
 
-DROP TABLE IF EXISTS `evt_types`;
-CREATE TABLE IF NOT EXISTS `evt_types` (
-  `id_type` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+CREATE TABLE `evt_types` (
+  `id_type` int NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `evt_types`
@@ -91,15 +86,12 @@ INSERT INTO `evt_types` (`id_type`, `name`) VALUES
 -- Structure de la table `prices`
 --
 
-DROP TABLE IF EXISTS `prices`;
-CREATE TABLE IF NOT EXISTS `prices` (
-  `id_price` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `prices` (
+  `id_price` int NOT NULL,
   `titre` varchar(255) NOT NULL,
   `prix` double NOT NULL,
-  `evt_id` int(11) NOT NULL,
-  PRIMARY KEY (`id_price`),
-  KEY `evt_id` (`evt_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `evt_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -107,18 +99,14 @@ CREATE TABLE IF NOT EXISTS `prices` (
 -- Structure de la table `reservations`
 --
 
-DROP TABLE IF EXISTS `reservations`;
-CREATE TABLE IF NOT EXISTS `reservations` (
-  `id_res` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `evt_id` int(11) NOT NULL,
+CREATE TABLE `reservations` (
+  `id_res` int NOT NULL,
+  `user_id` int NOT NULL,
+  `evt_id` int NOT NULL,
   `prix` double NOT NULL,
   `date` date NOT NULL,
-  `create_at` date DEFAULT (curdate()),
-  PRIMARY KEY (`id_res`),
-  KEY `evt_id` (`evt_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+  `create_at` date DEFAULT (curdate())
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `reservations`
@@ -143,17 +131,15 @@ INSERT INTO `reservations` (`id_res`, `user_id`, `evt_id`, `prix`, `date`, `crea
 -- Structure de la table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `id_user` int NOT NULL,
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `type` enum('admin','user') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'user',
-  `create_at` date DEFAULT (curdate()),
-  PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+  `create_at` date DEFAULT (curdate())
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `users`
@@ -165,6 +151,78 @@ INSERT INTO `users` (`id_user`, `nom`, `prenom`, `mail`, `password`, `type`, `cr
 (7, 'raillard', 'arsene', 'arsene.raillard44@gmail.com', '$2y$10$FZAxFpBHqEhH9Vu2zTIrQe6rQ7e4LfjhyVbvwMu90HpcaLGrkkvui', 'user', NULL),
 (8, 'hu', 'laura', 'laurahu@gmail.com', '$2y$10$AhES0f/5qW/95B5c6MXVTu.Z1HuNBtc0PihfKxwsCQZcHtkgqmfGC', 'user', NULL),
 (9, 'gillier', 'arthur', 'arthurgiller@gmail.com', '$2y$10$vVTnu8tH1pCHGCTUdLZdmOCDqkuHB/XlJdysFKMEZ7cwHKUaWg6a6', 'user', NULL);
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `evenements`
+--
+ALTER TABLE `evenements`
+  ADD PRIMARY KEY (`id_evt`),
+  ADD KEY `type` (`type`);
+
+--
+-- Index pour la table `evt_types`
+--
+ALTER TABLE `evt_types`
+  ADD PRIMARY KEY (`id_type`);
+
+--
+-- Index pour la table `prices`
+--
+ALTER TABLE `prices`
+  ADD PRIMARY KEY (`id_price`),
+  ADD KEY `evt_id` (`evt_id`);
+
+--
+-- Index pour la table `reservations`
+--
+ALTER TABLE `reservations`
+  ADD PRIMARY KEY (`id_res`),
+  ADD KEY `evt_id` (`evt_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Index pour la table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id_user`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `evenements`
+--
+ALTER TABLE `evenements`
+  MODIFY `id_evt` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT pour la table `evt_types`
+--
+ALTER TABLE `evt_types`
+  MODIFY `id_type` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `prices`
+--
+ALTER TABLE `prices`
+  MODIFY `id_price` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `reservations`
+--
+ALTER TABLE `reservations`
+  MODIFY `id_res` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT pour la table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Contraintes pour les tables déchargées
